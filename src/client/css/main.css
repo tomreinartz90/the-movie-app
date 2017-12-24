@@ -1,0 +1,16 @@
+/* Reset */
+html,
+body,
+div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mat-drawer {
+  min-width: 15rem;
+}
+
+mat-sidenav-container {
+  min-height: 100vh;
+}
