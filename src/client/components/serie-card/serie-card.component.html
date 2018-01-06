@@ -1,0 +1,6 @@
+<mat-card class="example-card" [routerLink]="['/series/details', serie.id]">
+  <mat-card-header>
+    <mat-card-title>{{serie.name}}</mat-card-title>
+  </mat-card-header>
+  <img *ngIf="serie && serie.poster_path" mat-card-image src="https://image.tmdb.org/t/p/w220_and_h330_bestv2/{{serie.poster_path}}">
+</mat-card>

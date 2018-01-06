@@ -1,0 +1,23 @@
+<div fxLayout='row' fxLayoutAlign="center center">
+  <mat-toolbar>
+    <span>Popular Movies</span>
+  </mat-toolbar>
+
+  <div class="horizontal">
+    <mm-movie *ngFor="let movie of movies" [movie]="movie" ></mm-movie>
+  </div>
+
+  <mat-toolbar>
+    <span>Popular Series</span>
+  </mat-toolbar>
+  <div class="horizontal">
+    <mm-serie *ngFor="let serie of series" [serie]="serie"></mm-serie>
+  </div>
+
+  <mat-toolbar>
+    <span>Popular People</span>
+  </mat-toolbar>
+  <div class="horizontal">
+    <mm-person *ngFor="let person of people" [person]="person"></mm-person>
+  </div>
+</div>

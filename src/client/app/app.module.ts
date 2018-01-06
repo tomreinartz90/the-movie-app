@@ -1,6 +1,7 @@
 import { NgModule }      from "@angular/core";
+import { RouterModule }      from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from "../routes/app-routing.module";
 import { AppComponent }  from "./app.component";
 import { FormsModule, ReactiveFormsModule }    from "@angular/forms";
 import {
@@ -35,8 +36,10 @@ import {
   MatIconRegistry,
   MatPaginatorModule,
 } from "@angular/material";
-import { AboutModule } from "./about/about.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { ComponentsModule } from "../components/components.module";
+import { MoviedbService } from "../components/services/moviedb.service";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -73,15 +76,17 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatSortModule,
     MatPaginatorModule,
     FlexLayoutModule,
-    AboutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentsModule,
+    HttpClientModule,
+    RouterModule
   ],
   declarations: [
     AppComponent
   ],
   providers: [
     MatIconRegistry,
-
+    MoviedbService,
   ],
   bootstrap: [AppComponent]
 })

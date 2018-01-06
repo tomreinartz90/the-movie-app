@@ -1,0 +1,7 @@
+<mat-card class="example-card" [routerLink]="['/people/details', person.id]">
+  <mat-card-header>
+    <mat-card-title>{{person.title || person.name}}</mat-card-title>
+    <!--<mat-card-subtitle>{{// movie.release_date | date:'y'}}</mat-card-subtitle>-->
+  </mat-card-header>
+  <img *ngIf="person && person.profile_path" mat-card-image src="https://image.tmdb.org/t/p/w220_and_h330_bestv2/{{person.profile_path}}" alt="Photo of a Shiba Inu">
+</mat-card>

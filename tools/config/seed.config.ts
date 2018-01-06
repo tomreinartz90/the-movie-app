@@ -67,7 +67,7 @@ export class SeedConfig {
   /**
    * The root folder of the project (up two levels from the current directory).
    */
-  PROJECT_ROOT = join(__dirname, "../..");
+  PROJECT_ROOT = join( __dirname, "../.." );
 
   /**
    * The current build type.
@@ -114,9 +114,9 @@ export class SeedConfig {
   COVERAGE_PORT = argv["coverage-port"] || 4004;
 
   /**
-  * The path to the coverage output
-  * NB: this must match what is configured in ./karma.conf.js
-  */
+   * The path to the coverage output
+   * NB: this must match what is configured in ./karma.conf.js
+   */
   COVERAGE_DIR = "coverage_js";
   COVERAGE_TS_DIR = "coverage";
 
@@ -132,7 +132,7 @@ export class SeedConfig {
    * The base path of node modules.
    * @type {string}
    */
-  NPM_BASE = slash(join(".", this.APP_BASE, "node_modules/"));
+  NPM_BASE = slash( join( ".", this.APP_BASE, "node_modules/" ) );
 
   /**
    * The build interval which will force the TypeScript compiler to perform a typed compile run.
@@ -228,7 +228,7 @@ export class SeedConfig {
   /**
    * The directory of the tasks provided by the seed.
    */
-  SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, "tasks", "seed");
+  SEED_TASKS_DIR = join( process.cwd(), this.TOOLS_DIR, "tasks", "seed" );
 
   /**
    * Seed tasks which are composition of other tasks.
@@ -356,7 +356,7 @@ export class SeedConfig {
    */
   ENABLE_SCSS = ["true", "1"].indexOf(
     `${process.env.ENABLE_SCSS}`.toLowerCase()
-  ) !== -1 ||
+    ) !== -1 ||
     argv["scss"] ||
     false;
 
@@ -454,10 +454,10 @@ export class SeedConfig {
   ROLLUP_INCLUDE_DIR: string[] = ["node_modules/**"];
 
   /**
-  * List of named export Object key value pairs
-  * key: dependencie file
-  * value: exported Objects
-  */
+   * List of named export Object key value pairs
+   * key: dependencie file
+   * value: exported Objects
+   */
   ROLLUP_NAMED_EXPORTS: any[] = [];
 
   /**
@@ -466,9 +466,9 @@ export class SeedConfig {
    */
   get DEPENDENCIES(): InjectableDependency[] {
     return normalizeDependencies(
-      this.NPM_DEPENDENCIES.filter(filterDependency.bind(null, this.BUILD_TYPE))
+      this.NPM_DEPENDENCIES.filter( filterDependency.bind( null, this.BUILD_TYPE ) )
     ).concat(
-      this._APP_ASSETS.filter(filterDependency.bind(null, this.BUILD_TYPE))
+      this._APP_ASSETS.filter( filterDependency.bind( null, this.BUILD_TYPE ) )
     );
   }
 
@@ -535,12 +535,20 @@ export class SeedConfig {
       "@angular/cdk/platform": "node_modules/@angular/cdk/bundles/cdk-platform.umd.js",
       "@angular/flex-layout": "node_modules/@angular/flex-layout/bundles/flex-layout.umd.js",
       "app/": `${this.APP_BASE}app/`,
+      "routes/": `${this.APP_BASE}routes/`,
+      "components/": `${this.APP_BASE}components/`,
       // For test config
       "dist/dev/": "/base/dist/dev/",
-      "": "node_modules/",
+      "": "node_modules/"
     },
     packages: {
       [this.BOOTSTRAP_DIR]: {
+        defaultExtension: "js"
+      },
+      routes: {
+        defaultExtension: "js"
+      },
+      components: {
         defaultExtension: "js"
       }
     }
@@ -561,8 +569,8 @@ export class SeedConfig {
     defaultJSExtensions: true,
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
-      join("node_modules", "*", "package.json"),
-      join("node_modules", "@angular", "*", "package.json")
+      join( "node_modules", "*", "package.json" ),
+      join( "node_modules", "@angular", "*", "package.json" )
       // for other modules like @ngx-translate the package.json path needs to updated here
       // otherwise npm run build.prod would fail
       // join("node_modules", "@ngx-translate", "*", "package.json")
@@ -571,7 +579,7 @@ export class SeedConfig {
       // Note that for multiple apps this configuration need to be updated
       // You will have to include entries for each individual application in
       // `src/client`.
-      [join(this.TMP_DIR, this.BOOTSTRAP_DIR, "*")]: `${this.TMP_DIR}/${this
+      [join( this.TMP_DIR, this.BOOTSTRAP_DIR, "*" )]: `${this.TMP_DIR}/${this
         .BOOTSTRAP_DIR}/*`,
       "@angular/platform-browser/animations":
         "node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js",
@@ -684,9 +692,9 @@ export class SeedConfig {
   COLOR_GUARD_WHITE_LIST: [string, string][] = [];
 
   /**
-  * Browser-sync middleware configurations array.
-  * @type {Array}
-  */
+   * Browser-sync middleware configurations array.
+   * @type {Array}
+   */
   PROXY_MIDDLEWARE: any[] = [];
 
   /**
@@ -700,7 +708,7 @@ export class SeedConfig {
    */
   QUERY_STRING_GENERATOR = () => {
     return Date.now().toString();
-  }
+  };
 
   /**
    * Returns the array of injectable dependencies (the list of local files to be injected in the `index.html`).
@@ -732,9 +740,9 @@ export class SeedConfig {
     const defaults = {
       "browser-sync": {
         middleware: [
-          require("connect-history-api-fallback")({
+          require( "connect-history-api-fallback" )( {
             index: `${this.APP_BASE}index.html`
-          }),
+          } ),
           ...this.PROXY_MIDDLEWARE
         ],
         port: this.PORT,
@@ -747,13 +755,13 @@ export class SeedConfig {
             [`${this.APP_BASE}${this.APP_SRC}`]: this.APP_SRC,
             [`${this.APP_BASE}${this.APP_DEST}`]: this.APP_DEST,
             [`${this.APP_BASE}node_modules`]: "node_modules",
-            [`${this.APP_BASE.replace(/\/$/, "")}`]: this.APP_DEST
+            [`${this.APP_BASE.replace( /\/$/, "" )}`]: this.APP_DEST
           }
         }
       },
 
       // Note: you can customize the location of the file
-      "environment-config": join(this.PROJECT_ROOT, this.TOOLS_DIR, "env"),
+      "environment-config": join( this.PROJECT_ROOT, this.TOOLS_DIR, "env" ),
 
       /**
        * The options to pass to gulp-sass (and then to node-sass).
@@ -777,7 +785,7 @@ export class SeedConfig {
       }
     };
 
-    this.mergeObject(defaults, this.PLUGIN_CONFIGS);
+    this.mergeObject( defaults, this.PLUGIN_CONFIGS );
 
     return defaults;
   }
@@ -811,17 +819,17 @@ export class SeedConfig {
    * @param {any} target The target object (to receive values from source)
    * @param {any} source The source object (to be merged onto target)
    */
-  mergeObject(target: any, source: any) {
-    const deepExtend = require("deep-extend");
-    deepExtend(target, source);
+  mergeObject( target: any, source: any ) {
+    const deepExtend = require( "deep-extend" );
+    deepExtend( target, source );
   }
 
   /**
    * Locate a plugin configuration object by plugin key.
    * @param {any} pluginKey The object key to look up in PLUGIN_CONFIGS.
    */
-  getPluginConfig(pluginKey: string): any {
-    if (this._PLUGIN_CONFIGS[pluginKey]) {
+  getPluginConfig( pluginKey: string ): any {
+    if ( this._PLUGIN_CONFIGS[pluginKey] ) {
       return this._PLUGIN_CONFIGS[pluginKey];
     }
     return null;
@@ -833,32 +841,32 @@ export class SeedConfig {
       : "css";
   }
 
-  addPackageBundles(pack: ExtendPackages) {
-    if (pack.path) {
+  addPackageBundles( pack: ExtendPackages ) {
+    if ( pack.path ) {
       this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
       this.SYSTEM_BUILDER_CONFIG.paths[pack.name] = pack.path;
     }
 
-    if (pack.packageMeta) {
+    if ( pack.packageMeta ) {
       this.SYSTEM_CONFIG_DEV.packages[pack.name] = pack.packageMeta;
       this.SYSTEM_BUILDER_CONFIG.packages[pack.name] = pack.packageMeta;
     }
   }
 
-  addPackagesBundles(packs: ExtendPackages[]) {
-    packs.forEach((pack: ExtendPackages) => {
-      this.addPackageBundles(pack);
-    });
+  addPackagesBundles( packs: ExtendPackages[] ) {
+    packs.forEach( ( pack: ExtendPackages ) => {
+      this.addPackageBundles( pack );
+    } );
   }
 
   /**
- * Convert named rollup array to object
- */
+   * Convert named rollup array to object
+   */
   getRollupNamedExports() {
     let namedExports = {};
-    this.ROLLUP_NAMED_EXPORTS.map(namedExport => {
-      namedExports = Object.assign(namedExports, namedExport);
-    });
+    this.ROLLUP_NAMED_EXPORTS.map( namedExport => {
+      namedExports = Object.assign( namedExports, namedExport );
+    } );
     return namedExports;
   }
 }
@@ -867,10 +875,10 @@ export class SeedConfig {
  * Normalizes the given `deps` to skip globs.
  * @param {InjectableDependency[]} deps - The dependencies to be normalized.
  */
-export function normalizeDependencies(deps: InjectableDependency[]) {
+export function normalizeDependencies( deps: InjectableDependency[] ) {
   deps
-    .filter((d: InjectableDependency) => !/\*/.test(d.src)) // Skip globs
-    .forEach((d: InjectableDependency) => (d.src = require.resolve(d.src)));
+    .filter( ( d: InjectableDependency ) => !/\*/.test( d.src ) ) // Skip globs
+    .forEach( ( d: InjectableDependency ) => (d.src = require.resolve( d.src )) );
   return deps;
 }
 
@@ -880,16 +888,16 @@ export function normalizeDependencies(deps: InjectableDependency[]) {
  * @param  {InjectableDependency} d   - The dependency to check.
  * @return {boolean}                    `true` if the dependency is used in this environment, `false` otherwise.
  */
-function filterDependency(type: string, d: InjectableDependency): boolean {
+function filterDependency( type: string, d: InjectableDependency ): boolean {
   const t = d.buildType || d.env;
   d.buildType = t;
-  if (!t) {
-    d.buildType = Object.keys(BUILD_TYPES).map(k => BUILD_TYPES[k]);
+  if ( !t ) {
+    d.buildType = Object.keys( BUILD_TYPES ).map( k => BUILD_TYPES[k] );
   }
-  if (!(d.buildType instanceof Array)) {
+  if ( !(d.buildType instanceof Array) ) {
     (<any>d).env = [d.buildType];
   }
-  return d.buildType.indexOf(type) >= 0;
+  return d.buildType.indexOf( type ) >= 0;
 }
 
 /**
@@ -897,7 +905,7 @@ function filterDependency(type: string, d: InjectableDependency): boolean {
  * @return {number} The applications version.
  */
 function appVersion(): number | string {
-  const pkg = require("../../package.json");
+  const pkg = require( "../../package.json" );
   return pkg.version;
 }
 
@@ -908,9 +916,9 @@ function getBuildType() {
   const type = (argv["build-type"] || argv["env"] || "").toLowerCase();
   const base: string[] = argv["_"];
   const prodKeyword = !!base
-    .filter(o => o.indexOf(BUILD_TYPES.PRODUCTION) >= 0)
+    .filter( o => o.indexOf( BUILD_TYPES.PRODUCTION ) >= 0 )
     .pop();
-  if ((base && prodKeyword) || type === BUILD_TYPES.PRODUCTION) {
+  if ( (base && prodKeyword) || type === BUILD_TYPES.PRODUCTION ) {
     return BUILD_TYPES.PRODUCTION;
   } else {
     return BUILD_TYPES.DEVELOPMENT;
