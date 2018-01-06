@@ -15,8 +15,10 @@
 
           <div class="mobile_header medium">
             <div class="content">
-              <a href="/movies/details/{{movie.id}}"><h2>{{movie.title}} <span class="release_date">({{movie.release_date}})</span>
-              </h2></a>
+              <h2>
+                {{movie.title}} <span class="release_date">({{movie.release_date | date : 'y'}})</span>
+
+              </h2>
             </div>
           </div>
 
