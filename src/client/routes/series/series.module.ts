@@ -1,11 +1,13 @@
 import { NgModule } from "@angular/core";
-import { MatCardModule, MatListModule } from "@angular/material";
-import { seriesRouting } from "./series.router";
+import { MatCardModule, MatListModule, MatProgressBarModule, MatToolbarModule } from "@angular/material";
 import { SeriesComponent } from "./series.component";
+import { CommonModule } from "@angular/common";
+import { ShowComponent } from "./detail/show.component";
 
 @NgModule( {
-  imports: [MatListModule, MatCardModule],
-  declarations: [SeriesComponent]
+  imports: [MatListModule, MatCardModule, MatToolbarModule, MatProgressBarModule, CommonModule],
+  declarations: [SeriesComponent, ShowComponent]
 } )
 
 export class SeriesModule {}
+

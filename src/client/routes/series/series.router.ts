@@ -4,10 +4,11 @@ import { SeriesComponent } from "./series.component";
 import { MovieComponent } from "../movies/detail/movie.component";
 import { MoviesModule } from "../movies/movies.module";
 import { SeriesModule } from "./series.module";
+import { ShowComponent } from "./detail/show.component";
 
 const routes: Routes = [
-  { path: "series", component: SeriesComponent },
-  { path: "details/:id", component: SeriesComponent }
+  { path: "", component: SeriesComponent },
+  { path: "details/:id", component: ShowComponent }
 
 ];
 

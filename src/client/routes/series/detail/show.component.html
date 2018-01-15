@@ -1,0 +1,78 @@
+<mat-progress-bar *ngIf="show == null" mode="query"></mat-progress-bar>
+<ng-container *ngIf="show != null">
+  <section class="images inner">
+    <div class="poster">
+      <div class="image_content">
+        <img class="backdrop" src="https://image.tmdb.org/t/p/w640_and_h360_bestv2/{{show.backdrop_path}}">
+
+        <img class="poster" src="https://image.tmdb.org/t/p/w116_and_h174_bestv2/{{show.poster_path}}">
+      </div>
+    </div>
+
+    <div class="header_poster_wrapper">
+      <section class="header poster">
+        <div class="title" dir="auto">
+
+          <div class="mobile_header medium">
+            <div class="content">
+              <h2>
+                {{show.name}} <span class="release_date">({{show.first_air_date | date : 'y'}})</span>
+
+              </h2>
+            </div>
+          </div>
+
+
+        </div>
+
+        <mat-toolbar color="primary">
+          <mat-toolbar-row>
+            <a>Trailers</a>&nbsp;
+            <a>Sources</a>
+          </mat-toolbar-row>
+
+        </mat-toolbar>
+        <!--
+              <ul class="auto actions">
+
+
+                <li class="tooltip use_tooltip " title="Log in om lijsten te creëren en bewerken" data-role="tooltip">
+                  <a class="no_click" href="#"><span class="glyphicons glyphicons-list x1"></span></a>
+                </li>
+
+
+                <li class="use_tooltip tooltip" title="Log in om deze film aan uw favorietenlijst toe te voegen"
+                    data-role="tooltip">
+                  <a id="favourite" class="no_click add_to_account_list favourite false" href="#"><span
+                    class="glyphicons glyphicons-heart x1"></span></a>
+                </li>
+
+
+                <li class="use_tooltip tooltip" title="Log in om deze film aan je watchlist toe te voegen" data-role="tooltip">
+                  <a id="watchlist" class="no_click add_to_account_list watchlist false" href="#"><span
+                    class="glyphicons glyphicons-bookmark x1"></span></a>
+                </li>
+
+
+                <li class="tooltip use_tooltip rating" title="Log in om deze film te beoordelen" data-role="tooltip">
+                  <a id="rate_it" class="no_click rating false" href="#"><span class="glyphicons glyphicons-star x1"></span></a>
+                </li>
+
+
+              </ul>
+        -->
+
+      </section>
+    </div>
+
+  </section>
+
+  <mat-card>
+    <mat-card-content>
+      <h4>Overview</h4>
+      <p>{{show.overview}}</p>
+    </mat-card-content>
+
+  </mat-card>
+
+</ng-container>

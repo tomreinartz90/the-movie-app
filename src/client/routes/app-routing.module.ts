@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { HomeRoutingModuleFactory } from "./home/home.router";
 import { MoviesRoutinggModuleFactory } from "./movies/movies.router";
+import { SeriesRoutinggModuleFactory } from "./series/series.router";
 
 @NgModule( {
   imports: [
@@ -9,7 +10,7 @@ import { MoviesRoutinggModuleFactory } from "./movies/movies.router";
       { path: "", redirectTo: "home", pathMatch:"full" },
       { path: "home", loadChildren: HomeRoutingModuleFactory },
       { path: "movies", loadChildren: MoviesRoutinggModuleFactory },
-      { path: "series", loadChildren: MoviesRoutinggModuleFactory },
+      { path: "series", loadChildren: SeriesRoutinggModuleFactory },
       { path: "people", loadChildren: MoviesRoutinggModuleFactory },
     ] )
   ],
